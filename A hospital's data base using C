@@ -1,0 +1,334 @@
+#include <stdio.h>
+#include <math.h>
+
+void addP(int A[60][8], int B[20][3])
+{
+	int x, RN;
+	for(int i=0 ; i<50 ; i++)
+	{
+		if(A[i][0]==0)
+		{
+			A[i][0]=i+1;
+			printf("The patient's id will be %d\n", A[i][0]);
+			x=i;
+			break;
+		}
+	}
+
+	printf("Please enter the patient's age:");
+	scanf("%d", &A[x][1]);
+
+	printf("Please enter the patient's medical condetion:");
+	scanf("%d", &A[x][4]);
+
+	printf("Please enter the date of which the patient was added:-\n");
+	printf("Day:");
+	scanf("%d", &A[x][5]);
+	printf("Month:");
+	scanf("%d", &A[x][6]);
+	printf("Year:");
+	scanf("%d", &A[x][7]);
+
+
+	while(1)
+	{
+		printf("Please enter the room where you want to put the patient to:");
+		scanf("%d", &RN);
+		for(int i=0 ; i<=3 ; i++)
+		{
+
+			if(i==3)
+			{
+				printf("\nThis room is full! Please try another one.\n");
+				break;
+			}
+
+			else if(RN<1 || RN>20)
+			{
+				printf("\nThis room does not exist!\n");
+				for(int i=0 ; i<9 ; i++)
+				    A[x][i]=0;
+				break;
+			}
+
+			else if(B[RN-1][i]==0)
+			{
+				B[RN-1][i]=1;
+				A[x][2]=RN;
+				A[x][3]=i;
+				printf("\nPatient (%d) has been added to bed %d in room %d!\n", x+1, i, RN);
+				break;
+			}
+
+			else if(B[RN-1][i]==1)
+				continue;
+
+		}
+
+		if(A[x][2]==RN)
+			break;
+
+		else
+			continue;
+	}
+}
+
+void removeP(int A[60][8], int B[20][3])
+{
+	int PI;
+	printf("Please enter the id of the patient:");
+	scanf("%d", &PI);
+
+	if(PI>60 || PI<1)
+		printf("Invalid Patlient Id!\n");
+
+	else if(A[PI-1][0]==PI)
+	{
+		B[ (A[PI-1][3]-1) ] [ A[PI-1][4] ]=0;
+		for(int i=0 ; i<8 ; i++)
+			A[PI-1][i]=0;
+		printf("Done! patient %d has been deleted\n", PI);
+	}
+
+	else
+		printf("This patient does not exist!\n");
+}
+
+void editP(int A[60][8], int B[20][3])
+{
+	while(1)
+	{
+		int PI, action;
+		printf("\nPlease enter the Id of the ptient you'd like to edit:");
+		scanf("%d", &PI);
+		if(PI<1 || PI>60)
+		{
+			printf("\nInvalid Id number! try again.\n");
+			continue;
+		}
+
+		else if(A[PI-1][0]==PI)
+		{
+			printf("What information would you like to change?\n1:Age:%d    2:Assigned Bed:R%dB%d  3:Medical Condition:%d   4:Date:%d/%d/%d\n", A[PI-1][1], A[PI-1][2], A[PI-1][3], A[PI-1][4], A[PI-1][5],  A[PI-1][6],  A[PI-1][7]);
+			scanf("%d", &action);
+			if(action==1)
+			{
+				printf("\nPlease enter the new age:");
+				scanf("%d", &A[PI-1][1]);
+				printf("Done! the new patient's age is %d\n", A[PI-1][1]);
+				break;
+			}
+
+			else if(action==2)
+			{
+				int RN;
+				while(1)
+				{
+					printf("\nPlease enter the new room:");
+					scanf("%d", &RN);
+					if(RN<1 || RN>20)
+					{
+						printf("\nThis room does not exist! Please try again.");
+						continue;
+					}
+
+					else
+						for(int i=0 ; i<=4 ; i++)
+						{
+
+							if(i==4)
+							{
+								printf("\nThis room is full! Please try another one.\n");
+								break;
+							}
+
+							else if(B[RN-1][i]==0)
+							{
+								B[ (A[PI-1][2]-1) ] [  A[PI-1] [3] ]=0;
+								B[RN-1][i]=1;
+								A[PI-1][2]=RN;
+								A[PI-1][3]=i;
+								printf("\nThe patient has been added to bed %d in room %d!\n", i, RN);
+								break;
+							}
+
+							else if(B[RN-1][i]==1)
+								continue;
+
+						}
+
+					if(A[PI-1][2]==RN)
+						break;
+				}
+
+				if(A[PI-1][2]==RN)
+					break;
+			}
+
+			else if(action==3)
+			{
+				printf("\nPlease enter the new medical condition:");
+				scanf("%d", &A[PI-1][4]);
+				printf("\nDone! the new patient's medical condition is %d\n\n", A[PI-1][4]);
+				break;
+			}
+
+			else if(action==4)
+			{
+				printf("\nPlease enter the new date:-\n");
+				printf("Day:");
+				scanf("%d", &A[PI-1][5]);
+				printf("Month:");
+				scanf("%d", &A[PI-1][6]);
+				printf("Year:");
+				scanf("%d", &A[PI-1][7]);
+				printf("Done! the new patient's date is %d/%d/%d", A[PI-1][5], A[PI-1][6], A[PI-1][7]);
+				break;
+			}
+
+
+		}
+
+		else
+		{
+			printf("This patient does not exist!\n");
+			break;
+		}
+	}
+}
+void viewR(int A[20][3])
+{
+		int RN, action2, Fcount=0, Ecount=0;
+		printf("Please enter the number of the room you would like to view:");
+		scanf("%d", &RN);
+		if(RN>=1  && RN<=20)
+		{
+			for(int j=0 ; j<3 ; j++)
+			{
+				if(A[RN-1][j]==1)
+					Fcount++;
+				else if(A[RN-1][j]==0)
+					Ecount++;
+			}
+
+			printf("Room (%d) has %d empty beds and %d full beds\n", RN, Ecount, Fcount);
+		}
+
+		else
+			printf("This room does not exist!\n");
+	}
+
+void viewP(int A[60][8])
+{
+	while(1)
+	{
+		int action2, PI;
+		printf("Please enter the ID of the patient:");
+		scanf("%d", &PI);
+		if (A[PI-1][0]==PI)
+			printf("\nId:%d    Age:%d    Assigned Bed:R%dB%d  Medical Condition:%d   Date:%d/%d/%d", A[PI-1][0], A[PI-1][1], A[PI-1][2], A[PI-1][3], A[PI-1][4], A[PI-1][5], A[PI-1][6],  A[PI-1][7]);
+		else
+			printf("\nThis patient does not exit!\n");
+		printf("\nWhat do you wish to do now?\n1:Exit to main menu.                                2:View another patient.\n");
+		scanf("%d", &action2);
+		if(action2==1)
+			break;
+		else if(action2==2)
+			continue;
+	}
+}
+
+void viewW(int A[20][3])
+{
+	int Ecount=0, Fcount=0;
+	for(int i=0 ; i<20 ; i++)
+	{
+		for(int j=0 ; j<3 ; j++)
+			if(A[i][j]==0)
+				Ecount++;
+
+			else if(A[i][j]==1)
+				Fcount++;
+	}
+	printf("\nThe ward has %d empty bed(s) and %d full beds.\n", Ecount, Fcount);
+}
+
+int main()
+{
+	int ward[20][3]= {0}, PDetails[60][8]= {0};
+	int action, action2;
+	printf("\nwelcome, what would you like to do?\n");
+	while(1)
+	{
+		printf("\n1:Manage patients.\n2:View rooms and wards.\n3:Search pateints and details.\n4:Exit.\nplease enter the number of the action you want to make:");
+		scanf("%d",&action);
+
+		if(action==4)
+		{
+			printf("\n\nGoodbye!");
+			break;
+		}
+
+		if (action==1)
+		{
+			while(1)
+			{
+				printf("\n1:Add a patient\n2:Remove a patient\n3:Edit a patient's details.\n4:Exit to main menu.\n");
+				scanf("%d", &action2);
+				if(action2==4)
+					break;
+
+				else if(action2==1)
+				{
+					addP(PDetails, ward);
+				}
+				else if(action2==2)
+				{
+					removeP(PDetails, ward);
+				}
+
+				else if(action2==3)
+				{
+					editP(PDetails, ward);
+				}
+				else
+				{
+					printf("\nPlease choose an action to do!\n");
+					continue;
+				}
+			}
+		}
+
+
+		else if(action==2)
+		{
+			printf("\nwhat would you like to do?");
+			while(1)
+			{
+				printf("\n1:View a certain room.\n2:View the entire ward.\n3:Exit to main menu.\n");
+				scanf("%d",&action2);
+				if(action2==3)
+					break;
+				else if(action2==1)
+					viewR(ward);
+
+				else if(action2==2)
+					viewW(ward);
+
+				else
+					printf("\nPlease choose an option!\n");
+			}
+
+		}
+
+
+		else if(action==3)
+		{
+			viewP(PDetails);
+		}
+
+		else
+			printf("\nPlease choose an action to do!\n");
+
+	}
+}
