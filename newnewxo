@@ -1,0 +1,334 @@
+//THIS WAS CODED ON MY PHONE ON A SPAN OF 2 WEEKS EVERYTIME I WAIT FOR MY BUS AT THE BUS STATION 
+//AS A FUNNY LITTLE PROJECT, MORE ADVANCED VERSION WILL (or will not) BE PUPLISHED 
+//I HATE WAITING IN A PUPpwBLIC SPACE
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+int main(int argc, char *argv[])
+
+{
+	int count=1, turn=1;
+	bool end=true;
+	vector < vector <char> >m={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+	char x;
+
+	while(count <=10)
+	{
+		
+				
+		
+		for(int i=0 ; i<3 ; i++)
+		{
+			for(int k=0 ; k<3 ; k++)
+			cout << m[i][k] << " ";
+			
+			cout << endl;
+		}
+		if(count==10)
+		{
+			cout <<endl << "A tie!" <<endl<<"Would You like to plsy again?(y/n)";
+			cin >>x; cout <<endl;	
+		if(x=='y' || x=='Y')
+		{
+				m={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+            	count =1; turn =1; end=true;
+            	continue;
+			
+		}
+		else
+		{
+			break;
+		}
+		}
+
+		if((m[0][0]=='X' && m[0][1]=='X'  && m[0][2]=='X') || (m[1][0]=='X' && m[1][1]=='X' && m[1][2]=='X') || (m[2][0]=='X' && m[2][1]=='X' && m[2][2]=='X') || (m[0][0]=='X' && m[1][0]=='X' && m[2][0]=='X') || (m[0][1]=='X' && m[1][1]=='X' && m[2][1]=='X') || (m[0][2]=='X' && m[1][2]=='X' && m[2][2]=='X') || (m[0][0]=='X' && m[1][1]=='X' && m[2][2]=='X') || (m[0][2]=='X' && m[1][1]=='X' && m[2][0]=='X'))
+		{
+			cout << endl <<"X Wins!"<<endl<<"Would You Like to Play Again?(y/n)."<<endl;;
+            cin >> x;
+            if(x=='y' || x=='Y')
+            {
+            	m={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+            	count =1; turn =1; end=true;
+            	continue;
+            	
+            }
+            else
+            {
+           	 end = false;
+				break;
+            }
+			
+		}
+		else
+		if((m[0][0]=='O' && m[0][1]=='O' && m[0][2]=='O') || (m[1][0]=='O' && m[1][1]=='O'&& m[1][2]=='O') || (m[2][0]=='O' &&m[2][1]=='O' && m[2][2]=='O') || (m[0][0]=='O'&& m[1][0]=='O'&&m[2][0]=='O')||(m[0][1]=='O'&&m[1][1]=='O'&&m[2][1]=='O') || (m[0][2]=='O'&&m[1][2]=='O'&&m[2][2]=='O') || (m[0][0]=='O' && m[1][1]=='O'&& m[2][2]=='O') || (m[0][2]=='O' &&m[1][1]=='O' && m[2][0]=='O'))
+		{
+			cout << endl <<"O Wins!"<<endl<<"Would You Like to Play Again?(y/n)."<<endl;;
+            cin >> x;
+            if(x=='y' || x=='Y')
+            {
+            	m={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+            	count =1; turn =1; end=true;
+            	continue;
+            	
+            }
+            else
+            {
+           	 end = false;
+				break;
+            }
+			
+		}
+		
+		if(count%2!=0)
+		{
+			cout << "It's X's turn: ";
+			cin >> x;
+			cout << endl;
+			if(x=='1')
+				{
+					if(m[0][0]=='X'  || m[0][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][0]='X';
+					count++;
+				}
+			else
+			if(x=='2')
+				{
+					if(m[0][1]=='X'  || m[0][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][1]='X';
+					count++;
+				}
+				else
+				if(x=='3')
+				{
+					if(m[0][2]=='X'  || m[0][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][2]='X';
+					count++;
+				}
+				else
+				if(x=='4')
+				{
+					if(m[1][0]=='X'  || m[1][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+						m[1][0]='X';
+					count++;
+				}
+				else
+				if(x=='5')
+				{
+						if(m[1][1]=='X'  || m[1][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[1][1]='X';
+					count++;
+				}
+				else
+				if(x=='6')
+				{
+					if(m[1][2]=='X'  || m[1][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[1][2]='X';
+					count++;
+				}
+				else
+				if(x=='7')
+				{
+					if(m[2][0]=='X'  || m[2][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[2][0]='X';
+					count++;
+				}
+				else
+				if(x=='8')
+				{
+					if(m[2][1]=='X'  || m[2][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[2][1]='X';
+					count++;
+				}
+				else
+				if(x=='9')
+				{
+					if(m[2][2]=='X'  || m[2][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[2][2]='X';
+					count++;
+				}
+				else
+			cout <<"Please Choose a Valid letter!"<<endl;
+		}//end of X turn this comment was NOT mad by ChatGPT
+		
+		else
+			if(count%2==0)
+		{
+			cout << "It's O's turn: ";
+			cin >> x;
+			cout << endl;
+			if(x=='1')
+				{
+						if(m[0][0]=='X'  || m[0][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][0]='O';
+					count++;
+				}
+			else
+			
+			if(x=='2')
+				{
+					if(m[0][1]=='X'  || m[0][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					if(m[0][1]=='X'  || m[0][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][1]='O';
+					count++;
+				}
+				
+				else
+				if(x=='3')
+				{
+				if(m[0][2]=='X'  || m[0][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[0][2]='O';
+					count++;
+				}
+			
+				else
+				if(x=='4')
+				{
+					if(m[1][0]=='X'  || m[1][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[1][0]='O';
+					count++;
+				}
+				
+				else
+				if(x=='5')
+				{
+						if(m[1][1]=='X'  || m[1][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[1][1]='O';
+					count++;
+				}
+				else
+				if(x=='6')
+				{
+						if(m[1][2]=='X'  || m[1][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[1][2]='O';
+					count++;
+				}
+				else
+				if(x=='7')
+				{
+						if(m[2][0]=='X'  || m[2][0]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else	
+					m[2][0]='O';
+					count++;
+				}
+				else
+				if(x=='8')
+				{
+						if(m[2][1]=='X'  || m[2][1]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[2][1]='O';
+					count++;
+				}
+				else
+				if(x=='9')
+				{
+						if(m[2][2]=='X'  || m[2][2]=='O')
+					{
+						cout << "This letter has been chosen already!" <<endl;
+						continue;
+					}
+					else
+					m[2][2]='O';
+					count++;
+				}
+				else
+			cout <<"Please Choose a Valid letter!"<<endl;
+		}
+		
+		
+	
+	}
+		
+	
+		
+	}
