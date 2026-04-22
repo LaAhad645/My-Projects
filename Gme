@@ -1,2 +1,53 @@
-//GAME
-jhvc
+#include <iostream>
+
+using namespace std;
+
+void addd(int x, int y)
+{
+	cout << x + y;
+}
+
+void welcome()
+{
+	
+	
+}
+int main(int argc, char *argv[])
+{
+	int x;
+	cout << "-Hello dude, how are thungs?"<<endl;
+
+
+	cout <<endl<< "1)Hi! Good what about you?"
+	<<endl<<"2)hehe u misspelled things!"<<endl<<":";
+	
+	cin >>x;
+	if(x==1)
+		cout<<endl<<"-Things aren't really going well with me...";
+		else
+			cout<<endl<<"-Haha, was hoping you wouldn't notice that.";
+			
+		cout<<endl <<"-So, what brought you here?";
+		
+		cout<<endl<<endl<<"1)I was just hoping for a challenge really, I'm not the best but would like to see some talent."<<endl<<"2)Nothing just wandering here and there u'know"<<endl<<":";
+		
+		cin >> x;
+		if(x==1)
+		cout<<endl<<"-Oh you're here for the game and not the money? Interesting.";
+		else
+			cout<<endl<<"-Yea yea I know I know, life is a bitch, am I right?";
+		
+	cout<<endl<<"-Aah fuck it, what are we doing at this point?";
+	cout<<"."<<endl<<"."<<endl<<"."<<endl<<
+	"Jumps off thr windows of 4th floor";
+	cout <<endl<<"Writer: I have no fucking idea what this guy just did, I'm literaly writing the script right now and he wasn't supposed to do that.";
+	cout<<endl<<endl<<"1)What? Who is this?!"<<endl<<"2)Wtf is that";
+	cin>>x;
+	if(x==1)
+		cout<<endl<<"-What? Who is this?!";
+		else
+			cout<<endl<<"-Wtf is that";
+	cout<<endl<<endl<<"Writer: wait a second, You can hear me?";
+	cout<<endl<<endl"1)....."<<endl<<"2)....."
+	cout<<endl<<"1)What?"<<
+}
